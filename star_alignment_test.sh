@@ -1,0 +1,51 @@
+genome=/GCF_000001635.27_GRCm39_genomic.fna
+
+STAR --runMode alignReads \
+         --genomeDir $genome \
+         --readFilesIn $R1_files $R2_files \
+         --readFilesCommand $READ_FILES \
+         --genomeDir $genome \
+         --readFilesIn $R1_files $R2_files \
+         --readFilesCommand $READ_FILES \
+         --twopassMode Basic \
+         --outStd Log \
+         --outReadsUnmapped Fastx \
+         --outFilterType BySJout \
+         --outFilterMultimapNmax 20 \
+         --outFilterMismatchNmax 999 \
+         --outFilterMismatchNoverReadLmax 0.04 \
+         --alignIntronMin 20 \
+         --alignIntronMax 1000000 \
+         --alignMatesGapMax 1000000 \
+         --alignSJoverhangMin 8 \
+         --alignSJDBoverhangMin 1 \
+         --sjdbScore 1 \
+         --runThreadN 8 \
+         --limitBAMsortRAM 31532137230 \
+         --outSAMtype BAM Unsorted \
+         --outSAMunmapped Within \
+         --quantMode TranscriptomeSAM GeneCounts \
+         --outFileNamePrefix $WORKDIR/star/ \
+         --outSAMattributes NH HI AS NM MD \
+         --outSAMattrRGline ID:"001" 	PL:"ILLUMINA" 	 PU:"flowcell" 	 LB:"unknown" 	SM:$sample 	CN:"IRIC"
+         --twopassMode Basic \
+         --outStd Log \
+         --outReadsUnmapped Fastx \
+         --outFilterType BySJout \
+         --outFilterMultimapNmax 20 \
+         --outFilterMismatchNmax 999 \
+         --outFilterMismatchNoverReadLmax 0.04 \
+         --alignIntronMin 20 \
+         --alignIntronMax 1000000 \
+         --alignMatesGapMax 1000000 \
+         --alignSJoverhangMin 8 \
+         --alignSJDBoverhangMin 1 \
+         --sjdbScore 1 \
+         --runThreadN 8 \
+         --limitBAMsortRAM 31532137230 \
+         --outSAMtype BAM Unsorted \
+         --outSAMunmapped Within \
+         --quantMode TranscriptomeSAM GeneCounts \
+         --outFileNamePrefix $WORKDIR/star/ \
+         --outSAMattributes NH HI AS NM MD \
+         --outSAMattrRGline ID:"001" 	PL:"ILLUMINA" 	 PU:"flowcell" 	 LB:"unknown" 	SM:$sample 	CN:"IRIC"
