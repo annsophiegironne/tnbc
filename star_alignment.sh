@@ -11,9 +11,15 @@ do
     sample=`echo $file | grep -Eo 'SRR[0-9]{8}'`
     R1_file=$folder/${sample}_1.fastq
     R2_file=$folder/${sample}_2.fastq
-    echo "mapping $sample"
     
-    mkdir $output/$sample
+    if [ -d $output/$sample ] 
+    then 
+        echo "$sample directory already exists"
+        continue
+    else
+        echo "making directory and mapping $sample"
+        mkdir $output/$sample
+    fi
     
     time STAR --runMode alignReads \
         --genomeDir $genome \
